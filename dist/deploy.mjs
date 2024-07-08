@@ -6,7 +6,7 @@ async function main() {
   const client = await hre.viem.getPublicClient({ chain: anvil, transport: http() });
   const [_, secondWalletClient] = await hre.viem.getWalletClients({ chain: anvil, transport: http() });
   const contractA = await hre.viem.deployContract(
-    "Lock",
+    "Lock.sol:Lock",
     [1819826971],
     {
       client: { wallet: secondWalletClient },
