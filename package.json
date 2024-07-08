@@ -1,0 +1,21 @@
+{
+  "name": "demo-hh-packages",
+  "devDependencies": {
+    "tsup": "^8.1.0"
+  },
+  "scripts": {
+    "deploy": "hardhat ignition deploy ignition/modules/Lock.ts",
+    "build": "tsup cli.ts deploy.ts --format esm "
+  },
+  "version": "0.0.19",
+  "bin": {
+    "demo": "dist/cli.mjs",
+    "deploy2": "dist/deploy2.mjs"
+  },
+  "dependencies": {
+    "@nomicfoundation/hardhat-toolbox-viem": "^3.0.0",
+    "@nomicfoundation/hardhat-viem": "^2.0.2",
+    "hardhat": "^2.22.5",
+    "viem": "^2.16.5"
+  }
+}
