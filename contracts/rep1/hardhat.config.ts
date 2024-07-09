@@ -3,7 +3,6 @@ import "@nomicfoundation/hardhat-toolbox-viem";
 import path from "path"
 
 const userRoot = process.env.PROJECT_ROOT || path.join(__dirname, "../../")
-console.log(userRoot)
 
 const config: HardhatUserConfig = {
   solidity: "0.8.24",

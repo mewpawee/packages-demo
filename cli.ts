@@ -1,21 +1,30 @@
 #!/usr/bin/env node
-import { exec } from "child_process"
-import path from "path";
-import { fileURLToPath } from 'url';
+import util from "util"
+import child_process from "child_process"
+const exec = util.promisify(child_process.exec);
+const cwd = process.cwd()
 
-const __filename = fileURLToPath(import.meta.url);
-const __dirname = path.dirname(__filename);
-const dir = path.join(__dirname, "..");
-// var dir = path.join(import.meta.dirname, '..')
+const main = async () => {
+  const target = process.argv[2]
+  console.log("target", target)
+  switch (target) {
+    case 'compile':
+      console.log("compiling rep1...")
+      await run(`PROJECT_ROOT=${cwd} npx hardhat --config contracts/rep1/hardhat.config.ts compile`)
+      console.log("compiling rep2...")
+      await run(`PROJECT_ROOT=${cwd} npx hardhat --config contracts/rep2/hardhat.config.ts compile`)
+      break
+    case 'run':
+      await run(`PROJECT_ROOT=${cwd} npx hardhat --config hardhat.config.ts run deploy.ts --no-compile`)
+    default:
+  }
+}
 
-exec(`PROJECT_ROOT=${dir} npx hardhat --config contracts/rep1/hardhat.config.ts compile`, { cwd: dir }, (error, stdout, stderr) => {
-  if (error) {
-    console.log(`error: ${error.message}`);
-    return;
-  }
-  if (stderr) {
-    console.log(`stderr: ${stderr}`);
-    return;
-  }
-  console.log(`stdout: ${stdout}`);
-})
+
+const run = async (cmd: string) => {
+  const { stdout, stderr } = await exec(cmd)
+  if (stdout) console.log(stdout)
+  if (stderr) console.log(stderr)
+}
+
+main()
