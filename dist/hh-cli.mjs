@@ -17,7 +17,7 @@ var main = async () => {
       await compile(path.join(__dirname, "..", "./contracts"));
       break;
     case "run":
-      await run(`PROJECT_ROOT=${cwd} npx hardhat --config hardhat.config.ts run scripts/deploy.ts --no-compile`);
+      await run(`PROJECT_ROOT=${cwd} hardhat --config hardhat.config.ts run scripts/deploy.ts --no-compile`);
     default:
   }
 };
@@ -26,7 +26,7 @@ var compile = async (folderPath) => {
     return path.join(folderPath, fileName, "hardhat.config.ts");
   });
   for (const config of configs) {
-    await run(`PROJECT_ROOT=${cwd} npx hardhat --config ${config} compile`);
+    await run(`PROJECT_ROOT=${cwd} hardhat --config ${config} compile`);
   }
 };
 var run = async (cmd) => {

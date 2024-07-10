@@ -7,7 +7,6 @@ const cwd = process.cwd()
 import fs from "fs"
 
 import { fileURLToPath } from 'url';
-
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
 
 const main = async () => {
@@ -18,7 +17,7 @@ const main = async () => {
       await compile(path.join(__dirname, "..", "./contracts"))
       break
     case 'run':
-      await run(`PROJECT_ROOT=${cwd} npx hardhat --config hardhat.config.ts run scripts/deploy.ts --no-compile`)
+      await run(`PROJECT_ROOT=${cwd} hardhat --config hardhat.config.ts run scripts/deploy.ts --no-compile`)
     default:
   }
 }
@@ -29,7 +28,7 @@ const compile = async (folderPath: string) => {
       return path.join(folderPath, fileName, "hardhat.config.ts");
     })
   for (const config of configs) {
-    await run(`PROJECT_ROOT=${cwd} npx hardhat --config ${config} compile`)
+    await run(`PROJECT_ROOT=${cwd} hardhat --config ${config} compile`)
   }
 }
 
