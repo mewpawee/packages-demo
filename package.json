@@ -5,16 +5,16 @@
   },
   "scripts": {
     "deploy": "hardhat ignition deploy ignition/modules/Lock.ts",
-    "build": "tsup cli.ts deploy.ts --format esm "
+    "build": "tsup scripts/hh-cli.ts --format esm "
   },
-  "version": "0.0.22",
+  "version": "0.0.23",
   "bin": {
-    "demo": "dist/cli.mjs",
-    "deploy": "dist/deploy.mjs"
+    "demo": "dist/hh-cli.mjs"
   },
   "dependencies": {
     "@nomicfoundation/hardhat-toolbox-viem": "^3.0.0",
     "hardhat": "^2.22.5",
+    "hardhat-preprocessor": "^0.1.5",
     "viem": "^2.17.3"
   }
 }

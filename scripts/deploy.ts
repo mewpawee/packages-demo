@@ -11,9 +11,9 @@ async function main() {
   console.log(hre.artifacts)
   const path = await hre.artifacts.getArtifactPaths()
   console.log(path)
-  const art = await hre.artifacts.readArtifact("HelloWorld")
+  const artifact = await hre.artifacts.readArtifact("HelloWorld")
+  console.log(artifact)
   // const art = await hre.artifacts.readArtifact("contracts/rep1/Lock2.sol:Lock")
-  console.log(art)
   // const art = await hre.artifacts.readArtifact("rep1/Lock2.sol:Lock")
   // console.log(art)
   // const lock = await hre.artifacts.readArtifact("Lock2.sol:Lock");
