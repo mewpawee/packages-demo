@@ -7,9 +7,9 @@
     "deploy": "hardhat ignition deploy ignition/modules/Lock.ts",
     "build": "tsup scripts/hh-cli.ts --format esm "
   },
-  "version": "0.0.23",
+  "version": "0.0.24",
   "bin": {
-    "demo": "dist/hh-cli.mjs"
+    "hh-cli": "dist/hh-cli.mjs"
   },
   "dependencies": {
     "@nomicfoundation/hardhat-toolbox-viem": "^3.0.0",

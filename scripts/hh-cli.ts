@@ -11,7 +11,7 @@ const main = async () => {
   console.log("command: ", command)
   switch (command) {
     case 'compile':
-      await compile("./contracts")
+      await compile(path.join(cwd, "./contracts"))
       break
     case 'run':
       await run(`PROJECT_ROOT=${cwd} npx hardhat --config hardhat.config.ts run scripts/deploy.ts --no-compile`)
