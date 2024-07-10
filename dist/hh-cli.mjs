@@ -12,7 +12,7 @@ var main = async () => {
   console.log("command: ", command);
   switch (command) {
     case "compile":
-      await compile(path.join(cwd, "./contracts"));
+      await compile(path.join(__dirname, "..", "./contracts"));
       break;
     case "run":
       await run(`PROJECT_ROOT=${cwd} npx hardhat --config hardhat.config.ts run scripts/deploy.ts --no-compile`);
