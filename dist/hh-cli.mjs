@@ -5,8 +5,10 @@ import util from "util";
 import child_process from "child_process";
 import path from "path";
 import fs from "fs";
+import { fileURLToPath } from "url";
 var exec = util.promisify(child_process.exec);
 var cwd = process.cwd();
+var __dirname = path.dirname(fileURLToPath(import.meta.url));
 var main = async () => {
   const command = process.argv[2];
   console.log("command: ", command);

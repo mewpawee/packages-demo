@@ -6,6 +6,10 @@ const exec = util.promisify(child_process.exec);
 const cwd = process.cwd()
 import fs from "fs"
 
+import { fileURLToPath } from 'url';
+
+const __dirname = path.dirname(fileURLToPath(import.meta.url));
+
 const main = async () => {
   const command = process.argv[2]
   console.log("command: ", command)
